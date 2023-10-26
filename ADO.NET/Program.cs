@@ -24,8 +24,23 @@
 //    }
 //}
 
-using ADO.NET;
+//using ADO.NET;
 
-Repository repository = new Repository();
+//Repository repository = new Repository();
 
-repository.GetByIdAsync(2);
+////repository.GetByIdAsync(2);
+
+//Users users = new Users()
+//{
+//    Id = 4,
+//    FirstName = "Bahriddin",
+//    LastName = "Abdusalomov",
+//    Age = 20
+//};
+
+//repository.Insert(users);
+
+
+DateTime dateTime = DateTime.Now;
+
+Console.WriteLine(dateTime);
