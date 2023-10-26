@@ -37,6 +37,7 @@
             phoneNumberTb = new TextBox();
             lastNameTb = new TextBox();
             registerBtn = new Button();
+            wrongRegisterLb = new Label();
             SuspendLayout();
             // 
             // label1
@@ -118,11 +119,21 @@
             registerBtn.UseVisualStyleBackColor = true;
             registerBtn.Click += registerBtn_Click;
             // 
+            // wrongRegisterLb
+            // 
+            wrongRegisterLb.AutoSize = true;
+            wrongRegisterLb.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            wrongRegisterLb.Location = new Point(54, 21);
+            wrongRegisterLb.Name = "wrongRegisterLb";
+            wrongRegisterLb.Size = new Size(0, 20);
+            wrongRegisterLb.TabIndex = 9;
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(469, 482);
+            Controls.Add(wrongRegisterLb);
             Controls.Add(registerBtn);
             Controls.Add(lastNameTb);
             Controls.Add(phoneNumberTb);
@@ -134,6 +145,7 @@
             Controls.Add(label1);
             Name = "MainForm";
             Text = "Messanger";
+            Click += registerBtn_Click;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -149,5 +161,6 @@
         private TextBox phoneNumberTb;
         private TextBox lastNameTb;
         private Button registerBtn;
+        private Label wrongRegisterLb;
     }
 }

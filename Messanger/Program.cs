@@ -1,3 +1,6 @@
+using Messanger.Interfaces;
+using Messanger.Repositories;
+
 namespace Messanger
 {
     internal static class Program
