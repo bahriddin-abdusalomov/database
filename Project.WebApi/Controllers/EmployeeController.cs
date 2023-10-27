@@ -15,13 +15,13 @@ namespace Project.WebApi.Controllers
         public EmployeeController(IEmployeeRepository employeeRepository)
         {
             this.employeeRepository = employeeRepository;
-        }
+        }   
 
         [HttpPost]
         public async Task<IActionResult> CreateAsync([FromForm] EmployeeDto employee)
             => Ok(await  employeeRepository.CreateAsync(employee));
 
-        [HttpDelete]
+        [HttpDelete("deepDelete")]
         public async Task<IActionResult> DeepDeleteAsync([FromForm] int id)
             => Ok(await employeeRepository.DeepDeletedAsync(id));
 
@@ -29,9 +29,17 @@ namespace Project.WebApi.Controllers
         public async Task<IActionResult> GetByIdAsync([FromQuery] int id)
             => Ok(await employeeRepository.GetAsync(id));
 
+        [HttpGet("getAll")]
+        public async Task<IActionResult> GetAllAsync()
+            => Ok(await employeeRepository.GetAllAsync());
+
         [HttpPut]
         public async Task<IActionResult> UpdateAsync([FromForm] EmployeeDto employeeDto, int id)
             => Ok(await employeeRepository.UpdateAsync(id, employeeDto));
+
+        [HttpDelete("delete")]
+        public async Task<IActionResult> DeleteAsync([FromForm] int id)
+            => Ok(await employeeRepository.DeleteAsync(id));
     }
 }
     
