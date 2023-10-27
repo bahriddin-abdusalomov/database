@@ -1,7 +1,8 @@
-﻿using Messanger.Models;
+﻿using Messanger.Dtos;
+using Messanger.Models;
 
 namespace Messanger.Interfaces;
 
-public interface IUserRepository : IRepository<User>
+public interface IUserRepository : IRepository<User, UserDto>
 {
 }
