@@ -3,6 +3,6 @@ using Project.WebApi.Models;
 
 namespace Project.WebApi.Interfaces;
 
-public interface IEmployeeRepository : IBaseRepository<EmployeeDto>
+public interface IEmployeeRepository : IBaseRepository<Employee, EmployeeDto>
 {
 }
