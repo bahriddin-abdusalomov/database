@@ -31,7 +31,7 @@
             allMessageTb = new TextBox();
             toWhomTb = new TextBox();
             toWhomBtn = new Button();
-            textBox1 = new TextBox();
+            messageTb = new TextBox();
             getMessageBtn = new Button();
             sendBtn = new Button();
             SuspendLayout();
@@ -61,12 +61,12 @@
             toWhomBtn.Text = "To Whom";
             toWhomBtn.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // messageTb
             // 
-            textBox1.Location = new Point(55, 415);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(456, 27);
-            textBox1.TabIndex = 3;
+            messageTb.Location = new Point(55, 415);
+            messageTb.Name = "messageTb";
+            messageTb.Size = new Size(456, 27);
+            messageTb.TabIndex = 3;
             // 
             // getMessageBtn
             // 
@@ -87,6 +87,7 @@
             sendBtn.TabIndex = 5;
             sendBtn.Text = "Send";
             sendBtn.UseVisualStyleBackColor = true;
+            sendBtn.Click += sendBtn_Click;
             // 
             // MessagePage
             // 
@@ -95,7 +96,7 @@
             ClientSize = new Size(815, 475);
             Controls.Add(sendBtn);
             Controls.Add(getMessageBtn);
-            Controls.Add(textBox1);
+            Controls.Add(messageTb);
             Controls.Add(toWhomBtn);
             Controls.Add(toWhomTb);
             Controls.Add(allMessageTb);
@@ -110,7 +111,7 @@
         private TextBox allMessageTb;
         private TextBox toWhomTb;
         private Button toWhomBtn;
-        private TextBox textBox1;
+        private TextBox messageTb;
         private Button getMessageBtn;
         private Button sendBtn;
     }

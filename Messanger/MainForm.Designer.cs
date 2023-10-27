@@ -38,6 +38,8 @@
             lastNameTb = new TextBox();
             registerBtn = new Button();
             wrongRegisterLb = new Label();
+            userNameTb = new TextBox();
+            userNameLb = new Label();
             SuspendLayout();
             // 
             // label1
@@ -111,7 +113,7 @@
             // registerBtn
             // 
             registerBtn.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            registerBtn.Location = new Point(98, 401);
+            registerBtn.Location = new Point(87, 483);
             registerBtn.Name = "registerBtn";
             registerBtn.Size = new Size(246, 49);
             registerBtn.TabIndex = 8;
@@ -128,11 +130,30 @@
             wrongRegisterLb.Size = new Size(0, 20);
             wrongRegisterLb.TabIndex = 9;
             // 
+            // userNameTb
+            // 
+            userNameTb.Location = new Point(73, 430);
+            userNameTb.Name = "userNameTb";
+            userNameTb.Size = new Size(298, 27);
+            userNameTb.TabIndex = 11;
+            // 
+            // userNameLb
+            // 
+            userNameLb.AutoSize = true;
+            userNameLb.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
+            userNameLb.Location = new Point(54, 391);
+            userNameLb.Name = "userNameLb";
+            userNameLb.Size = new Size(102, 25);
+            userNameLb.TabIndex = 10;
+            userNameLb.Text = "User name";
+            // 
             // MainForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(469, 482);
+            ClientSize = new Size(465, 598);
+            Controls.Add(userNameTb);
+            Controls.Add(userNameLb);
             Controls.Add(wrongRegisterLb);
             Controls.Add(registerBtn);
             Controls.Add(lastNameTb);
@@ -162,5 +183,7 @@
         private TextBox lastNameTb;
         private Button registerBtn;
         private Label wrongRegisterLb;
+        private TextBox userNameTb;
+        private Label userNameLb;
     }
 }

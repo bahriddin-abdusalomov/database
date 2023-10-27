@@ -1,6 +1,8 @@
-﻿using Messanger.Interfaces;
+﻿using Messanger.Dtos;
+using Messanger.Interfaces;
 using Messanger.Models;
 using System.Data.SqlClient;
+using System.Reflection;
 
 namespace Messanger.Repositories;
 
@@ -12,26 +14,31 @@ public class UserRepository : IUserRepository
         this._connectionString = "Server = (localdb)\\MSSQLLocalDB; Database = MessangerDb; Trusted_Connection = True;";
     }
 
-    public async Task<int> CreateAsync(User model)
+    public async Task<int> CreateAsync(UserDto model)
     {
         using (SqlConnection connection = new SqlConnection(this._connectionString))
         {
             connection.Open();
 
-            string query = "INSERT INTO Users(id, firstname, lastname,email,phonenumber)" +
-                " Values(@Id, " +
-                                                    "@FirstName, " +
-                                                    "@LastName, " +
-                                                    "@Email, " +
-                                                    "@PhoneNumber);";
+            string query = "INSERT INTO Users(Name, Surname, Email, PhoneNumber, UserName," +
+                                                "Created, Updated)" +
+                                                " Values(@Name, " +
+                                                        "@Surname, " +
+                                                        "@Email, " +
+                                                        "@PhoneNumber, " +
+                                                        "@UserName, " +
+                                                        "@Created, " +
+                                                        "@Updated);";
 
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@Id", model.Id);
-            command.Parameters.AddWithValue("@FirstName", model.FirstName);
-            command.Parameters.AddWithValue("@LastName", model.LastName);
+            command.Parameters.AddWithValue("@Name", model.FirstName);
+            command.Parameters.AddWithValue("@Surname", model.LastName);
             command.Parameters.AddWithValue("@Email", model.Email);
             command.Parameters.AddWithValue("@PhoneNumber", model.PhoneNumber);
+            command.Parameters.AddWithValue("@UserName", model.UserName);
+            command.Parameters.AddWithValue("@Created", DateTime.Now.ToString());
+            command.Parameters.AddWithValue("@Updated", "10/26/2023 9:12:10 PM");
 
             int affectedRows = command.ExecuteNonQuery();
 
@@ -39,7 +46,12 @@ public class UserRepository : IUserRepository
         }
     }
 
-    public Task<int> DeleteAsync(Guid id)
+    public Task<int> DeepDeletedAsync(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public Task<int> DeleteAsync(int id)
     {
         throw new NotImplementedException();
     }
@@ -49,37 +61,40 @@ public class UserRepository : IUserRepository
         throw new NotImplementedException();
     }
 
-    public async Task<User?> GetByIdAsync(string email)
+    public async Task<User> GetAsync(string email)
     {
-        using(SqlConnection connection = new SqlConnection(this._connectionString))
+        using (SqlConnection connection = new SqlConnection(this._connectionString))
         {
             connection.Open();
 
             string query = "SELECT * FROM Users WHERE Email = @Email";
             SqlCommand command = new SqlCommand(query, connection);
 
-            command.Parameters.AddWithValue("@Email", email);       
+            command.Parameters.AddWithValue("@Email", email);
 
-            using(SqlDataReader reader = command.ExecuteReader()) 
+            using (SqlDataReader reader = command.ExecuteReader())
             {
-                User user = new User();
-                if(reader.Read())
+                User employee = new User();
+                if (reader.Read())
                 {
-                    user.Id = reader.GetInt32(reader.GetOrdinal("ID"));
-                    user.FirstName = reader.GetString(reader.GetOrdinal("FirstName"));
-                    user.LastName = reader.GetString(reader.GetOrdinal("LastName"));
-                    user.Email = reader.GetString(reader.GetOrdinal("Email"));
-                    user.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
-
+                    employee.Id = reader.GetInt32(reader.GetOrdinal("Id"));
+                    employee.FirstName = reader.GetString(reader.GetOrdinal("Name"));
+                    employee.LastName = reader.GetString(reader.GetOrdinal("Surname"));
+                    employee.Email = reader.GetString(reader.GetOrdinal("Email"));
+                    employee.PhoneNumber = reader.GetString(reader.GetOrdinal("PhoneNumber"));
+                    employee.UserName = reader.GetString(reader.GetOrdinal("UserName"));
+                    employee.Created = DateTime.Parse(reader.GetString(reader.GetOrdinal("Created")));
+                    employee.Updated = DateTime.Parse(reader.GetString(reader.GetOrdinal("Updated")));
                 }
-                    if (user is null)
-                        return new User();
-                    return user;
+
+                if (employee.Id == 0)
+                    return new User();
+                return employee;
             }
         }
     }
 
-    public Task<int> UpdateAsync(Guid id, User model)
+    public Task<int> UpdateAsync(int id, UserDto entity)
     {
         throw new NotImplementedException();
     }

@@ -15,7 +15,6 @@ public class EmployeeRepository : IEmployeeRepository
         this._connectionString = "Server = (localdb)\\MSSQLLocalDB; Database = CompanyDb; Trusted_Connection = True;";
     }
 
-
     public async Task<int> DeepDeletedAsync(int id)
     {
         using (SqlConnection connection = new SqlConnection(this._connectionString))
@@ -158,7 +157,7 @@ public class EmployeeRepository : IEmployeeRepository
                 return employee;
             }
         }
-    }
+        }
 
     public async Task<int> CreateAsync(EmployeeDto model)
     {
