@@ -32,7 +32,6 @@ namespace Dapper.WebApi.Controllers
                 string query = "Select * From Users;";
 
                 var user = connect.Query<User>(query);
-
                 return Ok(user);
             }
 
@@ -54,5 +53,7 @@ namespace Dapper.WebApi.Controllers
                 return Ok(registers);
             }   
         }
+
+
     }
 }
