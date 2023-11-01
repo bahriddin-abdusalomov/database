@@ -16,7 +16,7 @@ namespace Messanger
 
         private void sendBtn_Click(object sender, EventArgs e)
         {
-            User user = _userRepository.GetAsync();
+           // User user = _userRepository.GetAsync();
             _message.MyUserName = _user.CurrentUser;
             if (toWhomTb.Text != null) _message.UserName = toWhomTb.Text;
             if (messageTb.Text != null) _message.Messages = messageTb.Text;
