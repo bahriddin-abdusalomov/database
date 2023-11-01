@@ -49,7 +49,7 @@ namespace ADO.NET
 
         public bool InsertData(string tableName, string data)
         {
-            using (SqlConnection connection = new SqlConnection(_connectionString))
+            using (SqlConnection connection = new SqlConnection(_connectionString))         
             {
                 connection.Open();
 
