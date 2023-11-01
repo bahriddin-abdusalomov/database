@@ -8,6 +8,7 @@ public class MessageRepository : IMessageRepository
     public Task<int> CreateAsync(MessageDto entity)
     {
 
+        throw new NotImplementedException();
     }
 
     public Task<int> DeepDeletedAsync(int id)
