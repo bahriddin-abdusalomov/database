@@ -22,7 +22,7 @@ namespace SearchDb.WebApi.Controllers
                     var result = connection.Query<Search>(query);
                      return Ok(result);
             }
-
+                                                                                                                                                                                                                                                                                            
         }
     }
 }
