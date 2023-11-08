@@ -57,3 +57,10 @@ namespace Dapper.WebApi.Controllers
 
     }
 }
+
+
+//Dapper, faqat C# dasturlash tilini qo'llab-quvvatlaydi va C# tilida ishlatiladi. 
+//    Dapper, .NET platformasi va C# tilini asosiy til sifatida qo'llab-quvvatlaydi va
+//    C# tilida yozilgan dasturlar uchun ma'lumotlar bazasi 
+//    bilan ishlashda oson va samarali bir vosita sifatida foydalaniladi. 
+//    Dapper, boshqa dasturlash tillarini to'la qo'llab-quvvatlamaydi.
