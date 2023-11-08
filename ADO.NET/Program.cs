@@ -44,3 +44,6 @@
 DateTime dateTime = DateTime.Now;
 
 Console.WriteLine(dateTime);
+
+//SQL Injection, web ilovalarda va ma'lumotlar bazasiga so'rov yuborishda xatolikni topish uchun 
+//    ishlatiladigan amaldir.
